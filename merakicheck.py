@@ -20,14 +20,14 @@ report_file = 'report.txt'
 ''' Cisco Meraki API request '''
 try:
     meraki = meraki.DashboardAPI(meraki_api_key, suppress_logging=True)
-except Exception as e_api:
-    raise Exception('Issues with Cisco Meraki API - {}'.format(e_api))
+except Exception as error_api:
+    raise Exception('Issues with Cisco Meraki API - {}'.format(error_api))
 ''' Cisco Meraki API request '''
 ''' /networks/{mynetwork}/devices '''
 try:
     devices = meraki.devices.getNetworkDevices(mynetwork)
-except Exception as e_api:
-    raise Exception('Issues with Cisco Meraki API - {}'.format(e_api))
+except Exception as error_api:
+    raise Exception('Issues with Cisco Meraki API - {}'.format(error_api))
 
 
 ''' Fix formating to match Cisco Meraki API '''
@@ -100,13 +100,13 @@ f.close()
 ''' Cisco Webex API request '''
 try:
     webex = WebexTeamsAPI(access_token=WebexAccessToken)
-except Exception as e_api:
-    raise Exception('Issues with Cisco Webex API - {}'.format(e_api))
+except Exception as error_api:
+    raise Exception('Issues with Cisco Webex API - {}'.format(error_api))
 ''' Message to Cisco Webex Room with report as file '''
 try:
     webex.messages.create(
         WebexRoomID,
         text="Report Completed",
         files=[report_file])
-except Exception as e_api:
-    raise Exception('Issues with Cisco Webex API - {}'.format(e_api))
+except Exception as error_api:
+    raise Exception('Issues with Cisco Webex API - {}'.format(error_api))
